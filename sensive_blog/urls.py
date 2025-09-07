@@ -4,11 +4,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # твой блог с namespace 'blog'
+
     path('', include(('blog.urls', 'blog'), namespace='blog')),
 ]
 
-# Подключаем маршруты тулбара ТОЛЬКО в DEBUG
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [
