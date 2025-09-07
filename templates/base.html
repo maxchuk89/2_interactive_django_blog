@@ -1,3 +1,4 @@
+<!-- templates/base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -5,36 +6,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sensive Blog</title>
+    <title>{% block title %}Sensive Blog{% endblock %}</title>
 
     <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" />
   </head>
   <body>
-
     <header class="header_area">
       <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container box_1620">
             <a class="navbar-brand logo_h" href="{% url 'blog:index' %}">
-              <img src="{% static 'img/logo.png' %}" alt="Sensive Logo"/>
+              <img src="{% static 'img/logo.png' %}" alt="Sensive Logo" />
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
 
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
               <ul class="nav navbar-nav menu_nav justify-content-center">
+                <!-- ШАГ 22: выравниваем цвет ссылок в шапке -->
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog:index' %}">Home</a>
+                  <a class="nav-link" href="{% url 'blog:index' %}" style="color:#3a414e">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog:contact' %}">Contact</a>
+                  <a class="nav-link" href="{% url 'blog:contact' %}" style="color:#3a414e">Contact</a>
                 </li>
               </ul>
 
@@ -50,16 +49,16 @@
       </div>
     </header>
 
-    <main class="site-main">
-      {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
 
     <footer class="footer-area section-padding">
       <div class="container">
         <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
           <p class="footer-text m-0">
             Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-            All rights reserved | Template by Colorlib
+            All rights reserved | This template is made with
+            <i class="fa fa-heart" aria-hidden="true"></i> by
+            <a href="https://colorlib.com" target="_blank">Colorlib</a>
           </p>
         </div>
       </div>
